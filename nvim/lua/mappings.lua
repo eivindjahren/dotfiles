@@ -1,18 +1,19 @@
+local wk = require("which-key")
 
-local function map(mode, lhs, rhs, opts)
+local function map(mode, lhs, rhs, description)
+  wk.register(mode, {
+    [lhs] = {rhs, description},
+  })
   local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
-map("n", "th", ":tabfirst<CR>")
-map("n", "tj", ":tabnext<CR>")
-map("n", "tk", ":tabprev<CR>")
-map("n", "tl", ":tablast<CR>")
-map("n", "tt", ":tabedit<Space>")
-map("n", "tn", ":tabnew<CR>")
-map("n", "tm", ":tabm<Space>")
-map("n", "td", ":tabclose<CR>")
-map("n", "<F5>", ":MundoToggle<CR>")
-map("t", "<Esc>", "<C-\\><C-n>")
+map("n", "th", ":tabfirst<CR>", "go to first tab")
+map("n", "tj", ":tabnext<CR>", "go to next tab")
+map("n", "tk", ":tabprev<CR>", "go to previous tab")
+map("n", "tl", ":tablast<CR>", "go to last tab")
+map("n", "tt", ":tabedit<Space>", "edit tab name" )
+map("n", "tn", ":tabnew<CR>", "open a new tab")
+map("n", "tm", ":tabm<Space>", "move to the tab with given name")
+map("n", "td", ":tabclose<CR>", "close the tab")
+map("n", "<F5>", ":MundoToggle<CR>", "Toggle mundo window")
+map("t", "<Esc>", "<C-\\><C-n>", "exit from terminal with <esc>")

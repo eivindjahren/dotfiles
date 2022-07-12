@@ -20,9 +20,6 @@ end
 vim.api.nvim_command("packadd packer.nvim")
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
-function get_setup(name)
-  return string.format('require("setup/%s")', name)
-end
 
 return require("packer").startup({
   function(use)
@@ -30,18 +27,15 @@ return require("packer").startup({
     use("wbthomason/packer.nvim")
     use({
       "nvim-treesitter/nvim-treesitter",
-      config = get_setup("treesitter"),
+      config = function() require("setup/treesitter") end,
       run = ":TSUpdate",
     })
-    use("nvim-treesitter/nvim-treesitter-textobjects")
-    -- use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
+    use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end })
     use({ "simnalamburt/vim-mundo" })
-    use({ "w0rp/ale" })
     use({ "vim-airline/vim-airline" })
     use({ "vim-airline/vim-airline-themes" })
     use({ "tpope/vim-vinegar" })
     use({ "tpope/vim-fugitive" })
-    use({ "rhysd/vim-clang-format" })
     use({ "vim-test/vim-test" })
     use({ "thirtythreeforty/lessspace.vim" })
     use({ "psf/black" })
@@ -50,22 +44,18 @@ return require("packer").startup({
     use({ "junegunn/fzf", run = "fzf#install" })
     use({ "junegunn/fzf.vim" })
     use({
+        "andythigpen/nvim-coverage",
+        config = function() require("setup/coverage") end,
+        requires = { "nvim-lua/plenary.nvim" }
+    })
+    use({
 	    "catppuccin/nvim",
 	    as = "catppuccin"
     })
-    -- use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
-    -- use({
-    --   "hrsh7th/nvim-cmp",
-    --   requires = {
-    --     { "hrsh7th/cmp-nvim-lsp" },
-    --     { "hrsh7th/cmp-buffer" },
-    --     { "hrsh7th/cmp-path" },
-    --     { "hrsh7th/cmp-cmdline" },
-    --     { "hrsh7th/cmp-vsnip" },
-    --     { "f3fora/cmp-spell", { "hrsh7th/cmp-calc" }, { "hrsh7th/cmp-emoji" } },
-    --   },
-    --   config = get_setup("cmp"),
-    -- })
+    use {
+      "folke/which-key.nvim",
+      config = function() require("setup/whichkey") end
+    }
     if packer_bootstrap then
       require("packer").sync()
     end

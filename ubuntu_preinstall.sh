@@ -1,12 +1,13 @@
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt update
-sudo apt install neovim curl python-dev python-pip python3-dev python3-pip
+sudo apt install curl python-dev python3-pip python3-dev python3-pip k
 
-sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+curl -L https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage
+sudo mv nvim.appimage /usr/bin/
+
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim.appimage 60
 sudo update-alternatives --config vi
-sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim.appimage 60
 sudo update-alternatives --config vim
-sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim.appimage 60
 sudo update-alternatives --config editor
 
 #kitty

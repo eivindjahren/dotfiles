@@ -26,9 +26,12 @@ vim.cmd([[colorscheme catppuccin]])
 vim.cmd [[
   let g:vim_isort_config_overrides = {'multi_line_output': 3}
   command! -bang -nargs=* GGrep  call fzf#vim#grep(    'git grep --line-number -- '.shellescape(<q-args>), 0,    fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-  command! Spawnkitty  !export KITTY_LISTEN_ON=unix:/tmp/mykitty && nohup kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty &
+  let g:kitty_spawned = 0
+  command! Spawnkitty  if g:kitty_spawned == 0 | let ret_code = system("export KITTY_LISTEN_ON=unix:/tmp/mykitty && nohup kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty &") | let g:kitty_spawned=1 | endif
 
-  autocmd BufWritePre silent! if get(g:, 'auto_test', 1) | execute ':TestSuite' | endif
+  let g:auto_test = 0
+  let g:test_root = "."
+  autocmd BufWritePre *.py silent! if g:auto_test == 1  | execute "cd" fnameescape(g:test_root) | execute ':Spawnkitty' | execute ':TestLast' | execute ':lua require("coverage").load(true)' | endif
   autocmd BufWritePre *.py silent! execute ':Isort'
   autocmd BufWritePre *.py silent! execute ':Black'
 ]]
