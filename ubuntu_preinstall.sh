@@ -1,5 +1,5 @@
 set -e
-sudo apt install curl python-dev python3-pip python3-dev python3-pip
+sudo apt install curl python3-pip python3-dev python3-pip libfuse
 
 curl -L https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage --output nvim.appimage
 sudo mv nvim.appimage /usr/bin/
