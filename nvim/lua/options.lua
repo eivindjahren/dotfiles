@@ -34,4 +34,8 @@ vim.cmd [[
   autocmd BufWritePre *.py silent! if g:auto_test == 1  | execute "cd" fnameescape(g:test_root) | execute ':Spawnkitty' | execute ':TestLast' | execute ':lua require("coverage").load(true)' | endif
   autocmd BufWritePre *.py silent! execute ':Isort'
   autocmd BufWritePre *.py silent! execute ':Black'
+
+  let g:ropevim_enable_shortcuts=0
+
+  autocmd FileType python setlocal omnifunc=RopeCompleteFunc
 ]]

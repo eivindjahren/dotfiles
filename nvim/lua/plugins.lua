@@ -36,6 +36,7 @@ return require("packer").startup({
     use({ "vim-airline/vim-airline-themes" })
     use({ "tpope/vim-vinegar" })
     use({ "tpope/vim-fugitive" })
+    use({ "python-rope/ropevim" })
     use({ "vim-test/vim-test" })
     use({ "thirtythreeforty/lessspace.vim" })
     use({ "psf/black" })
