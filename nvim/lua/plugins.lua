@@ -50,6 +50,20 @@ return require("packer").startup({
     use({ "lervag/vimtex",
       config = function() require("setup/vimtex") end
     })
+    use {
+       "hrsh7th/nvim-cmp",
+       requires = {
+         { "onsails/lspkind-nvim", module = "lspkind" },
+         { "hrsh7th/cmp-buffer", module = "cmp_buffer" },
+         { "hrsh7th/cmp-path", module = "cmp_path" },
+         { "hrsh7th/cmp-nvim-lsp", module = "cmp_nvim_lsp" },
+         { "hrsh7th/cmp-nvim-lua", module = "cmp_nvim_lua" },
+       },
+       event = "InsertEnter",
+       config = function()
+         require "setup/cmp"
+       end,
+     }
     use({
       'nvim-telescope/telescope.nvim',
       tag = '0.1.0',
