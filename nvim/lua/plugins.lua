@@ -36,14 +36,30 @@ return require("packer").startup({
     use({ "vim-airline/vim-airline-themes" })
     use({ "tpope/vim-vinegar" })
     use({ "tpope/vim-fugitive" })
-    use({ "python-rope/ropevim" })
-    use({ "vim-test/vim-test" })
+    use({
+        "python-rope/ropevim",
+        setup = function() require("setup/ropevim") end
+    })
+    use({
+        "vim-test/vim-test",
+        setup = function () require("setup/vim-test") end
+    })
     use({ "thirtythreeforty/lessspace.vim" })
     use({ "psf/black" })
     use({ "fisadev/vim-isort" })
-    use({ "lervag/vimtex" })
-    use({ "junegunn/fzf", run = "fzf#install" })
-    use({ "junegunn/fzf.vim" })
+    use({ "lervag/vimtex",
+      config = function() require("setup/vimtex") end
+    })
+    use({
+      'nvim-telescope/telescope.nvim',
+      tag = '0.1.0',
+      requires = {'nvim-lua/plenary.nvim'}
+    })
+    use({
+      'nvim-telescope/telescope-fzf-native.nvim',
+      config = function() require("setup/telescope") end,
+      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    })
     use({
         "andythigpen/nvim-coverage",
         config = function() require("setup/coverage") end,
