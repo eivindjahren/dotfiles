@@ -44,7 +44,10 @@ return require("packer").startup({
         "vim-test/vim-test",
         setup = function () require("setup/vim-test") end
     })
-    use({ "thirtythreeforty/lessspace.vim" })
+    use({
+        "thirtythreeforty/lessspace.vim",
+        config = function() require("setup/lessspace") end
+    })
     use({ "psf/black" })
     use({ "fisadev/vim-isort" })
     use({ "lervag/vimtex",

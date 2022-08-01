@@ -15,6 +15,7 @@ opt.mouse = "a"
 opt.smartindent = true
 opt.linebreak = true
 opt.termguicolors = true
+opt.laststatus = 3
 
 vim.g.neoterm_autoscroll = 1
 
