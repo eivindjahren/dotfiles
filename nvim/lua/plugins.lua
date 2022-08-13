@@ -30,6 +30,17 @@ return require("packer").startup({
       config = function() require("setup/treesitter") end,
       run = ":TSUpdate",
     })
+    use {
+      'pwntester/octo.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope.nvim',
+        'kyazdani42/nvim-web-devicons',
+      },
+      config = function ()
+        require"octo".setup()
+      end
+    }
     use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end })
     use({ "simnalamburt/vim-mundo" })
     use({ "vim-airline/vim-airline" })
