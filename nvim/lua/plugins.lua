@@ -43,10 +43,13 @@ return require("packer").startup({
     }
     use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end })
     use({ "simnalamburt/vim-mundo" })
-    use({ "vim-airline/vim-airline" })
+    use({ "vim-airline/vim-airline",
+        config = function () require("setup/vim-airline") end
+    })
     use({ "vim-airline/vim-airline-themes" })
     use({ "tpope/vim-vinegar" })
     use({ "tpope/vim-fugitive" })
+    use({ "Olical/conjure" })
     use({
         "python-rope/ropevim",
         setup = function() require("setup/ropevim") end
@@ -54,10 +57,6 @@ return require("packer").startup({
     use({
         "vim-test/vim-test",
         setup = function () require("setup/vim-test") end
-    })
-    use({
-        "thirtythreeforty/lessspace.vim",
-        config = function() require("setup/lessspace") end
     })
     use({ "psf/black" })
     use({ "fisadev/vim-isort" })
@@ -94,8 +93,8 @@ return require("packer").startup({
         requires = { "nvim-lua/plenary.nvim" }
     })
     use({
-	    "catppuccin/nvim",
-	    as = "catppuccin"
+        "catppuccin/nvim",
+        as = "catppuccin"
     })
     use {
       "folke/which-key.nvim",
