@@ -1,18 +1,11 @@
-require('telescope').setup {
-  extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
-    }
-  }
-}
-require('telescope').load_extension('fzf')
-
 local wk = require("which-key")
-wk.register("n", {
-    ["fg"] = { "find files in current git repository" }
-})
-vim.api.nvim_set_keymap("n", "fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", {noremap = true})
+
+local function map(mode, lhs, rhs, description)
+  wk.register(mode, {
+    [lhs] = {rhs, description},
+  })
+  local options = { noremap = true }
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", "live grep with telescope")
+map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files with telescope")

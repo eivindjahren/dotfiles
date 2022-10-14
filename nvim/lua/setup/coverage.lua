@@ -1,3 +1,4 @@
 require("coverage").setup({
-    commands = true
+    commands = true,
+    auto_reload = true
 })

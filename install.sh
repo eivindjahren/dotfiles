@@ -4,3 +4,6 @@ mkdir -p ~/.config/nvim/
 ln -sf -t ~/.config/nvim/ $DIR/nvim/*
 mkdir -p ~/.config/kitty/
 ln -sf -t ~/.config/kitty/ $DIR/kitty/*
+ln -sf $DIR/xmobarrc ~/.xmobarrc
+ln -sf $DIR/xsessionrc ~/.xsessionrc
+ln -sf $DIR/xmonad ~/.xmonad

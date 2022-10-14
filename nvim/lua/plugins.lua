@@ -44,7 +44,9 @@ return require("packer").startup({
     use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end })
     use({ "simnalamburt/vim-mundo" })
     use({ "vim-airline/vim-airline",
-        config = function () require("setup/vim-airline") end
+        config = function () require("setup/vim-airline") end,
+        requires = { "vim-airline/vim-airline-themes" },
+        tag = "v0.11"
     })
     use({ "vim-airline/vim-airline-themes" })
     use({ "tpope/vim-vinegar" })
@@ -80,12 +82,8 @@ return require("packer").startup({
     use({
       'nvim-telescope/telescope.nvim',
       tag = '0.1.0',
-      requires = {'nvim-lua/plenary.nvim'}
-    })
-    use({
-      'nvim-telescope/telescope-fzf-native.nvim',
       config = function() require("setup/telescope") end,
-      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+      requires = {'nvim-lua/plenary.nvim'}
     })
     use({
         "andythigpen/nvim-coverage",
@@ -94,8 +92,9 @@ return require("packer").startup({
     })
     use({
         "catppuccin/nvim",
-        as = "catppuccin"
+        tag="v0.2.3"
     })
+    use({"katawful/kat.nvim", tag="2.0"})
     use {
       "folke/which-key.nvim",
       config = function() require("setup/whichkey") end

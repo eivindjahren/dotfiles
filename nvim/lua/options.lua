@@ -19,6 +19,7 @@ opt.laststatus = 3
 
 vim.g.neoterm_autoscroll = 1
 
+vim.g.catppuccin_flavour = "mocha"
 vim.cmd([[colorscheme catppuccin]])
 
 vim.cmd [[
