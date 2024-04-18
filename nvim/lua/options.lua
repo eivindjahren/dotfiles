@@ -25,14 +25,3 @@ vim.api.nvim_create_autocmd("bufWritePost", {
 	group = group,
 })
 
-vim.cmd [[
-
-  let g:vimwiki_key_mappings =
-  \ {
-  \ 'headers': 0,
-  \ 'text_objs': 0,
-  \ }
-
-  set backupdir=$HOME/tmp
-]]
-

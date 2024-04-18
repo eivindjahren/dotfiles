@@ -45,7 +45,11 @@ return require("packer").startup({
         "vim-test/vim-test",
         setup = function () require("setup/vim-test") end
     })
-    use({ "vimwiki/vimwiki", tag="v2023.04.04_1" })
+    use({
+        "vimwiki/vimwiki",
+        config = function () require("setup/vim-wiki") end,
+        tag="v2023.04.04_1"
+    })
     use {
        "hrsh7th/nvim-cmp",
        requires = {
