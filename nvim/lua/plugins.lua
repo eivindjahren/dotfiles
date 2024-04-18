@@ -30,7 +30,7 @@ return require("packer").startup({
       config = function() require("setup/treesitter") end,
       run = ":TSUpdate",
     })
-    use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end, tag = "v0.1.6" })
+    use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end, tag = "v0.1.7" })
     use({ "simnalamburt/vim-mundo" })
     use({ "vim-airline/vim-airline",
         config = function () require("setup/vim-airline") end,
