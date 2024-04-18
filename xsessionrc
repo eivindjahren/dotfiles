@@ -1,3 +1,1 @@
 #!/bin/bash
-xscreensaver -no-splash &
-feh --bg-scale /usr/share/backgrounds/Cherry_Tree_in_Lakones_by_elenastravoravdi.jpg &

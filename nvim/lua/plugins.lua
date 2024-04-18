@@ -30,18 +30,7 @@ return require("packer").startup({
       config = function() require("setup/treesitter") end,
       run = ":TSUpdate",
     })
-    use {
-      'pwntester/octo.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope.nvim',
-        'kyazdani42/nvim-web-devicons',
-      },
-      config = function ()
-        require"octo".setup()
-      end
-    }
-    use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end })
+    use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end, tag = "v0.1.6" })
     use({ "simnalamburt/vim-mundo" })
     use({ "vim-airline/vim-airline",
         config = function () require("setup/vim-airline") end,
@@ -51,20 +40,12 @@ return require("packer").startup({
     use({ "vim-airline/vim-airline-themes" })
     use({ "tpope/vim-vinegar" })
     use({ "tpope/vim-fugitive" })
-    use({ "Olical/conjure" })
-    use({
-        "python-rope/ropevim",
-        setup = function() require("setup/ropevim") end
-    })
+    use({ "tpope/vim-rhubarb" })
     use({
         "vim-test/vim-test",
         setup = function () require("setup/vim-test") end
     })
-    use({ "psf/black" })
-    use({ "fisadev/vim-isort" })
-    use({ "lervag/vimtex",
-      config = function() require("setup/vimtex") end
-    })
+    use({ "vimwiki/vimwiki", tag="v2023.04.04_1" })
     use {
        "hrsh7th/nvim-cmp",
        requires = {
@@ -81,18 +62,16 @@ return require("packer").startup({
      }
     use({
       'nvim-telescope/telescope.nvim',
-      tag = '0.1.0',
+      tag = '0.1.6',
       config = function() require("setup/telescope") end,
-      requires = {'nvim-lua/plenary.nvim'}
-    })
-    use({
-        "andythigpen/nvim-coverage",
-        config = function() require("setup/coverage") end,
-        requires = { "nvim-lua/plenary.nvim" }
+      requires = {
+          { "nvim-telescope/telescope-live-grep-args.nvim", 'nvim-lua/plenary.nvim'},
+        },
     })
     use({
         "catppuccin/nvim",
-        tag="v0.2.3"
+        tag="v1.6.0",
+        config = function() require("setup/catppuccin") end
     })
     use({"katawful/kat.nvim", tag="2.0"})
     use {

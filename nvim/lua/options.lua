@@ -18,11 +18,21 @@ opt.termguicolors = true
 opt.laststatus = 3
 
 vim.g.neoterm_autoscroll = 1
-
-vim.g.catppuccin_flavour = "mocha"
-vim.cmd([[colorscheme catppuccin]])
+local group = vim.api.nvim_create_augroup("ruff", { clear = true })
+vim.api.nvim_create_autocmd("bufWritePost", {
+	pattern = "*.py",
+	command = "silent !ruff format %",
+	group = group,
+})
 
 vim.cmd [[
-  autocmd BufWritePre *.py silent! execute ':Isort'
-  autocmd BufWritePre *.py silent! execute ':Black'
+
+  let g:vimwiki_key_mappings =
+  \ {
+  \ 'headers': 0,
+  \ 'text_objs': 0,
+  \ }
+
+  set backupdir=$HOME/tmp
 ]]
+

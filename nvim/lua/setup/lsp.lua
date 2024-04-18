@@ -27,13 +27,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', "Rename workspace folder")
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', "list workspace folders")
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', "rename symbol")
+  buf_set_keymap('n', '<space>em', '<cmd>lua vim.lsp.buf.extract_method()<CR>', "rename symbol")
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', "Go to reference")
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', "Open error in floating window")
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', "Go to next error")
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', "Go to previous error")
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', "reformat")
   buf_set_keymap('n', '<leader>af', '<cmd>lua vim.lsp.buf.code_action()<CR>', "Perform code action")
-  buf_set_keymap('v', '<leader>af', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', "Perform code action")
+  buf_set_keymap('v', '<leader>af', '<cmd>lua vim.lsp.buf.code_action()<CR>', "Perform code action")
 
 end
 
