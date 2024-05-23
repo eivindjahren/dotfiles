@@ -30,7 +30,7 @@ return require("packer").startup({
       config = function() require("setup/treesitter") end,
       run = ":TSUpdate",
     })
-    use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end, tag = "v0.1.7" })
+    use({ "neovim/nvim-lspconfig", config = function() require("setup/lsp") end, tag = "v0.1.8" })
     use({ "simnalamburt/vim-mundo" })
     use({ "vim-airline/vim-airline",
         config = function () require("setup/vim-airline") end,
@@ -48,7 +48,7 @@ return require("packer").startup({
     use({
         "vimwiki/vimwiki",
         config = function () require("setup/vim-wiki") end,
-        tag="v2023.04.04_1"
+        tag="v2024.01.24"
     })
     use {
        "hrsh7th/nvim-cmp",
@@ -66,7 +66,7 @@ return require("packer").startup({
      }
     use({
       'nvim-telescope/telescope.nvim',
-      tag = '0.1.6',
+      tag = '0.1.7',
       config = function() require("setup/telescope") end,
       requires = {
           { "nvim-telescope/telescope-live-grep-args.nvim", 'nvim-lua/plenary.nvim'},
@@ -74,10 +74,9 @@ return require("packer").startup({
     })
     use({
         "catppuccin/nvim",
-        tag="v1.6.0",
+        tag="v1.7.0",
         config = function() require("setup/catppuccin") end
     })
-    use({"katawful/kat.nvim", tag="2.0"})
     use {
       "folke/which-key.nvim",
       config = function() require("setup/whichkey") end
