@@ -4,9 +4,10 @@ local on_attach = function(client, bufnr)
   local wk = require("which-key")
 
    local function buf_set_keymap(mode, lhs, rhs, description)
-     wk.register(mode, {
-       [lhs] = {rhs, description},
-     })
+      wk.add({
+        mode={mode},
+        {lhs, rhs, desc=description},
+      })
      vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap=true, silent=true })
    end
   -- local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end

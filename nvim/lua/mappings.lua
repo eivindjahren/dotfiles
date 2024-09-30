@@ -1,8 +1,9 @@
 local wk = require("which-key")
 
 local function map(mode, lhs, rhs, description)
-  wk.register(mode, {
-    [lhs] = {rhs, description},
+  wk.add({
+    mode={mode},
+    {lhs, rhs, desc=description},
   })
   local options = { noremap = true }
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)

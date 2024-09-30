@@ -79,6 +79,7 @@ return require("packer").startup({
     })
     use {
       "folke/which-key.nvim",
+      tag="v3.13.3",
       config = function() require("setup/whichkey") end
     }
     if packer_bootstrap then
